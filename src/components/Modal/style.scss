@@ -1,0 +1,76 @@
+@import "src/styles/base";
+
+.shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, .6);
+  opacity: 0;
+  z-index: -1;
+  transition: 150ms linear;
+
+  &.visible {
+    display: block;
+    z-index: 92;
+    opacity: 1;
+  }
+
+  .modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $white;
+    padding: calc(#{$defaultPadding} * 2);
+    border-radius: $defaultBorderRadius;
+    min-width: 320px;
+
+    .title {
+      position: relative;
+      font-weight: bold;
+      border-bottom: $defaultBorder;
+      width: 100%;
+      padding: 0 $defaultPadding $defaultPadding 0;
+      margin-bottom: 20px;
+      color: $black;
+    }
+
+    .text {
+      color: $black;
+    }
+
+    .closeBtn {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      top: calc(#{$defaultPadding} * 2);
+      right: calc(#{$defaultPadding} * 2);
+      margin-top: 2px;
+      fill: $red;
+      background: url("../../assets/icons/cross.svg") center center no-repeat;
+      background-size: contain;
+      transition: 150ms linear;
+
+      &:hover {
+        cursor: pointer;
+        opacity: .7;
+      }
+    }
+
+    .buttons-container {
+      position: relative;
+      width: 100%;
+      height: 40px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      &.one-button {
+        justify-content: center;
+      }
+    }
+  }
+}

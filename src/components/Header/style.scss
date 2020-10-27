@@ -1,0 +1,133 @@
+@import 'src/styles/base';
+
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background: $blue;
+  padding: 0 20px;
+  color: $white;
+  min-width: 940px;
+
+  .username {
+    position: absolute;
+    top: 50%;
+    right: 145px;
+    transform: translateY(-50%);
+    font-size: 14px;
+  }
+
+  .button {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+
+  .user-notifications-bell {
+    position: absolute;
+    right: 115px;
+    transition: 150ms linear;
+    opacity: .3;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .7;
+    }
+
+    .counter {
+      display: none;
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: $red;
+      font-size: 10px;
+      width: 14px;
+      height: 14px;
+      text-align: center;
+      line-height: 14px;
+      border-radius: 50%;
+    }
+
+    .bellIcon {
+      display: block;
+      height: 20px;
+      width: 20px;
+      background: url("../../assets/icons/bell.svg") center center no-repeat;
+      background-size: contain;
+    }
+
+    &.withMsg {
+      opacity: 1;
+      pointer-events: auto;
+
+      &:hover {
+        cursor: pointer;
+        opacity: .7;
+      }
+
+      .bellIcon {
+        animation: 1s infinite bellShake;
+      }
+
+      .counter {
+        display: block;
+      }
+    }
+  }
+}
+
+.user-notifications-list {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 10px 0 20px 0;
+
+  li {
+    position: relative;
+    padding: $defaultPadding calc(#{$defaultPadding} * 4) $defaultPadding $defaultPadding;
+    border-bottom: $defaultBorder;
+    color: $notActiveColor;
+
+    &:hover {
+      background: $light-grey;
+    }
+
+    .icon {
+      position: absolute;
+      display: none;
+      width: 8px;
+      height: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 12px;
+      border-radius: 50%;
+      background: $red;
+    }
+
+    &.active {
+      color: $black;
+
+      .icon {
+        display: block;
+      }
+    }
+  }
+}
+
+@keyframes bellShake {
+  0% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}

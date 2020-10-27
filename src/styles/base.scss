@@ -1,0 +1,303 @@
+@import "./variables.scss";
+
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  background: $white;
+  font-family: $family-sans-serif;
+  color: $black;
+  height: 100%;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $red;
+  border: 0 none $white;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $redHover;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: $redHover;
+}
+
+::-webkit-scrollbar-track {
+  background: $blue;
+  border: 0 none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: $blueHover;
+}
+
+::-webkit-scrollbar-track:active {
+  background: $blueHover;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.align-l {
+  text-align: left;
+}
+
+.align-c {
+  text-align: center;
+}
+
+.align-r {
+  text-align: right;
+}
+
+.c-pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button {
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  background: $red;
+  color: $white;
+  padding: $defaultPadding calc(#{$defaultPadding} * 2);
+  border: none;
+  outline: none;
+  border-radius: $defaultBorderRadius;
+  font-size: 16px;
+  transition: background 150ms linear;
+  font-family: system-ui;
+
+  &.with-icon {
+    display: flex;
+
+    .searchIcon {
+      position: relative;
+      display: block;
+      height: 18px;
+      width: 18px;
+      background: url("~@/assets/icons/search.svg") center center no-repeat;
+      background-size: contain;
+      margin-left: $defaultPadding;
+    }
+  }
+
+  &:active {
+    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: $redHover;
+  }
+
+  &[disabled=disabled] {
+    opacity: .6;
+
+    &:hover {
+      cursor: not-allowed;
+      background: $red;
+    }
+  }
+}
+
+.notifications-container {
+  position: fixed;
+  bottom: 5%;
+  width: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 99;
+
+  .notification {
+    position: relative;
+    border-radius: $defaultBorderRadius;
+    border: 1px solid transparent;
+    padding: 12px 20px;
+    animation: 6s linear showAndHide;
+    width: 100%;
+    margin: 16px auto 0 auto;
+
+    &.info {
+      color: $infoColor;
+      background-color: $infoBgColor;
+      border-color: $infoBorderColor;
+    }
+
+    &.error {
+      color: $errorColor;
+      background-color: $errorBgColor;
+      border-color: $errorBorderColor;
+    }
+
+    &.success {
+      color: $successColor;
+      background-color: $successBgColor;
+      border-color: $successBorderColor;
+    }
+
+    &.warning {
+      color: $warningColor;
+      background-color: $warningBgColor;
+      border-color: $warningBorderColor;
+    }
+  }
+}
+
+@keyframes showAndHide {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.container {
+  grid-area: container;
+  padding: 0 $defaultPadding 72px $defaultPadding;
+  min-height: 100%;
+  height: 90vh;
+  transition: opacity 150ms linear;
+  background: url("~@/assets/images/bg.jpg") center center no-repeat;
+  background-size: cover;
+  overflow: auto;
+
+  &::-webkit-scrollbar-track {
+    border-radius: 0;
+  }
+
+  .button {
+    margin-top: $defaultPadding;
+  }
+
+  .sub-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background: $white;
+    border-radius: $defaultBorderRadius;
+    box-shadow: 0 1px 12px 6px rgba(0, 0, 0, .1);
+    padding: calc(#{$defaultPadding} * 2);
+  }
+}
+
+.link {
+  color: $white;
+  text-decoration: none;
+}
+
+.input {
+  transition: box-shadow 150ms linear;
+
+  &:active,
+  &:focus {
+    border-color: $blue;
+    box-shadow: 0 0 0 0.125em #5590d7;
+  }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 150ms;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+#app {
+  &.isLoading {
+    .container {
+      opacity: 0;
+    }
+  }
+}
+
+.with-popup {
+  position: relative;
+  display: block;
+  max-width: 200px;
+
+  &:hover {
+    cursor: help;
+
+    .popup {
+      z-index: 3;
+      opacity: 1;
+    }
+  }
+
+  .popup {
+    position: absolute;
+    font-size: 14px;
+    display: block;
+    padding: $defaultPadding;
+    max-width: 200px;
+    background: $white;
+    border-radius: $defaultBorderRadius;
+    box-shadow: 0 1px 12px 6px rgba(0, 0, 0, 0.1);
+    top: 50%;
+    right: 0;
+    transform: translate(80%, -40%);
+    z-index: -3;
+    opacity: 0;
+    transition: opacity 150ms linear;
+
+    &:before {
+      content: '';
+      display: block;
+      height: 16px;
+      width: 16px;
+      position: absolute;
+      top: 12px;
+      left: -8px;
+      background: $white;
+      transform: rotate(136deg);
+      z-index: 1;
+    }
+  }
+}

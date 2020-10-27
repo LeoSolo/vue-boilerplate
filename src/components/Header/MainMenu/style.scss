@@ -1,0 +1,66 @@
+@import "src/styles/base";
+
+.menu-container {
+  position: relative;
+  height: 100%;
+  margin: 0 16px;
+
+  .list-menu {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+    .menu-item {
+      position: relative;
+      height: 100%;
+      transition: 150ms linear;
+
+      &:hover {
+        background: $blueHover;
+      }
+
+      .link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        color: $white;
+        padding: $defaultPadding;
+        text-decoration: none;
+        transition: 150ms linear;
+        font-family: system-ui;
+
+        &.router-link-active {
+          background: $blueHover;
+          border-bottom: 3px solid $red;
+          font-weight: bold;
+        }
+
+        &:hover {
+          .arrowIcon {
+            transform: rotate(0);
+          }
+        }
+
+        .arrowIcon {
+          position: relative;
+          display: block;
+          height: 12px;
+          width: 12px;
+          margin-left: $defaultPadding;
+          background: url("../../../assets/icons/light-down-arrow.svg") center center no-repeat;
+          background-size: contain;
+          transform: rotate(180deg);
+          transition: transform 150ms linear;
+
+          &.active {
+            transform: rotate(0);
+          }
+        }
+      }
+    }
+  }
+}

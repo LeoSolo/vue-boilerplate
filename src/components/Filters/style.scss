@@ -1,0 +1,98 @@
+@import "src/styles/base";
+
+.filters-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: $defaultPadding calc(#{$defaultPadding} * 1.5) calc(#{$defaultPadding} * 1.5) calc(#{$defaultPadding} * 1.5);
+  background: $white;
+  box-shadow: 0 1px 12px 6px rgba(0, 0, 0, .1);
+  border-radius: $defaultBorderRadius;
+  margin: $defaultPadding 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 800px;
+
+  form {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+    div {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .input-container {
+      flex: 1;
+    }
+  }
+
+  label {
+    flex-grow: 1;
+    margin: 0 $defaultPadding;
+    min-width: 200px;
+  }
+
+  .button {
+    margin: $defaultPadding;
+    max-height: 40px;
+  }
+
+  .filters-list {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 $defaultPadding;
+    width: 100%;
+
+    .filter-mark {
+      position: relative;
+      font-size: 15px;
+      color: $infoColor;
+      background: $infoBgColor;
+      border: $infoBorderColor;
+      border-radius: 13px;
+      padding: $defaultPadding calc(#{$defaultPadding} * 3.5) $defaultPadding $defaultPadding;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: $defaultPadding $defaultPadding 0 0;
+
+      .iconCross {
+        position: absolute;
+        top: 51%;
+        right: $defaultPadding;
+        transform: translateY(-50%);
+        display: block;
+        width: 12px;
+        height: 12px;
+        background: url("../../assets/icons/cross.svg") center center no-repeat;
+        background-size: contain;
+
+        &:hover {
+          cursor: pointer;
+          opacity: .7;
+        }
+      }
+    }
+  }
+
+  .clear-button-container {
+    .button {
+      font-size: 12px;
+      top: 2px;
+    }
+  }
+}

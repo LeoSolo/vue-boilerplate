@@ -1,0 +1,46 @@
+@import "src/styles/base";
+
+.fieldset {
+  margin-top: 16px;
+  border-radius: $defaultBorderRadius;
+  border: $defaultBorder;
+  max-height: 600px;
+  transition: max-height 200ms linear;
+  padding: 12px;
+  background: $white;
+  overflow: visible;
+
+  &.accordion {
+    max-height: 0;
+  }
+
+  &.isOpened {
+    max-height: 600px;
+
+    .arrowDownIcon {
+      transform: rotate(360deg);
+    }
+  }
+
+  legend {
+    display: flex;
+    flex-direction: row;
+
+    .arrowDownIcon {
+      position: relative;
+      display: block;
+      transform: rotate(180deg);
+      transition: transform 150ms linear;
+      height: 15px;
+      width: 15px;
+      background: url("../../assets/icons/down-arrow.svg") center center no-repeat;
+      background-size: contain;
+      margin: 2px 0 0 $defaultPadding;
+
+      &:hover {
+        cursor: pointer;
+        opacity: .7;
+      }
+    }
+  }
+}

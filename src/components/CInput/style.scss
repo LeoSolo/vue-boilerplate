@@ -1,0 +1,23 @@
+@import "src/styles/base";
+
+.input-container {
+  position: relative;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+
+  .input {
+    position: relative;
+    margin-top: 8px;
+    width: 100%;
+    height: 40px;
+    border: $defaultBorder;
+    padding: 8px 12px;
+    outline: none;
+    border-radius: $defaultBorderRadius;
+    font-size: 16px;
+    color: $black;
+    text-overflow: ellipsis;
+  }
+
+}

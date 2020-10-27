@@ -1,0 +1,74 @@
+@import "src/styles/base";
+
+.tabs-container {
+  position: relative;
+  width: 100%;
+
+  .tabs {
+    position: relative;
+    width: 100%;
+    padding: calc(#{$defaultPadding} * 2);
+    background: $white;
+    margin-top: 40px;
+    box-shadow: 0 1px 12px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0 $defaultBorderRadius $defaultBorderRadius $defaultBorderRadius;
+    border: $defaultBorder;
+    z-index: 2;
+
+    .tab {
+      animation: hide 300ms linear;
+
+      &.active {
+        animation: show 300ms linear;
+      }
+    }
+  }
+
+  .controls-container {
+    position: absolute;
+    height: 28px;
+    top: -26px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    .title {
+      position: relative;
+      margin: 0 4px 0 0;
+      background: $white;
+      padding: $defaultPadding calc(#{$defaultPadding} * 2);
+      border-radius: $defaultBorderRadius $defaultBorderRadius 0 0;
+      border: $defaultBorder;
+      border-bottom: none;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.active {
+        z-index: 3;
+      }
+    }
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
